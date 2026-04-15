@@ -1,325 +1,263 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>NeverMiss AI</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
 }
 
-body{
-background:#f5f7fb;
-color:#111827;
-}
-
-/* HEADER */
-
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:white;
-box-shadow:0 2px 12px rgba(0,0,0,.05);
-position:sticky;
-top:0;
-}
-
-.logo{
-font-size:22px;
-font-weight:700;
-}
-
-nav a{
-margin-left:25px;
-text-decoration:none;
-color:#374151;
-font-weight:500;
+body {
+  background:#070b14;
+  color:white;
 }
 
 /* HERO */
-
-.hero{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:110px 8%;
-flex-wrap:wrap;
-background:linear-gradient(120deg,#eef2ff,#f0f9ff);
+.hero {
+  text-align:center;
+  padding:130px 20px;
+  background: radial-gradient(circle at top, #1b2d5c, #070b14);
 }
 
-.hero-text{
-max-width:520px;
+.hero h1 {
+  font-size:56px;
+  margin-bottom:15px;
 }
 
-.hero h1{
-font-size:52px;
-margin-bottom:20px;
+.hero p {
+  max-width:750px;
+  margin:0 auto;
+  color:#b7c3df;
+  font-size:18px;
+  line-height:1.5;
 }
 
-.hero p{
-font-size:19px;
-margin-bottom:30px;
-color:#4b5563;
+.buttons {
+  margin-top:25px;
 }
 
-.hero button{
-padding:16px 32px;
-font-size:17px;
-background:#2563eb;
-border:none;
-border-radius:10px;
-color:white;
-cursor:pointer;
-box-shadow:0 6px 20px rgba(37,99,235,.3);
+button {
+  padding:14px 22px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
 }
 
-.hero img{
-width:460px;
-max-width:100%;
-border-radius:16px;
+.primary {
+  background:#4f7cff;
+  color:white;
 }
 
-/* FEATURES */
-
-.features{
-padding:90px 8%;
-background:white;
+.primary:hover {
+  background:#6a92ff;
 }
 
-.features h2{
-text-align:center;
-font-size:36px;
-margin-bottom:60px;
+.secondary {
+  background:transparent;
+  border:1px solid #4f7cff;
+  color:#4f7cff;
+  margin-left:10px;
 }
 
-.feature-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:40px;
+/* SECTIONS */
+.section {
+  padding:90px 20px;
+  max-width:1100px;
+  margin:auto;
 }
 
-.card{
-background:#f9fafb;
-padding:30px;
-border-radius:14px;
-text-align:center;
-box-shadow:0 6px 20px rgba(0,0,0,.06);
+h2 {
+  text-align:center;
+  margin-bottom:40px;
+  font-size:32px;
 }
 
-.card img{
-width:70px;
-margin-bottom:18px;
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
 }
 
-.card h3{
-margin-bottom:10px;
-font-size:20px;
+.card {
+  background:#111a2f;
+  padding:22px;
+  border-radius:12px;
+  border:1px solid #1f2b4a;
 }
 
-/* PRODUCT */
-
-.product{
-padding:100px 8%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-flex-wrap:wrap;
-background:#f5f7fb;
+/* DASHBOARD */
+.dashboard {
+  background:#0f172a;
+  border-radius:14px;
+  padding:25px;
+  border:1px solid #22314d;
 }
 
-.product img{
-width:450px;
-max-width:100%;
-border-radius:14px;
+.log {
+  margin-top:15px;
 }
 
-.product-text{
-max-width:520px;
+.log div {
+  background:#121c33;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:10px;
+  font-size:14px;
 }
 
-.product-text h2{
-font-size:38px;
-margin-bottom:20px;
-}
-
-.product-text p{
-font-size:18px;
-color:#4b5563;
+/* PRICING */
+.price {
+  font-size:34px;
+  color:#4f7cff;
+  margin:10px 0;
 }
 
 /* CTA */
-
-.cta{
-padding:110px 20px;
-text-align:center;
-background:linear-gradient(120deg,#2563eb,#6366f1);
-color:white;
+.cta {
+  text-align:center;
 }
 
-.cta h2{
-font-size:42px;
-margin-bottom:20px;
-}
-
-.cta p{
-font-size:18px;
-opacity:.9;
-}
-
-.cta button{
-margin-top:30px;
-padding:18px 38px;
-font-size:18px;
-border:none;
-border-radius:12px;
-background:white;
-color:#2563eb;
-cursor:pointer;
+input {
+  padding:13px;
+  width:260px;
+  border-radius:6px;
+  border:none;
+  margin-right:10px;
 }
 
 /* FOOTER */
-
-footer{
-background:#111827;
-color:#9ca3af;
-padding:45px;
-text-align:center;
-font-size:14px;
+footer {
+  text-align:center;
+  padding:40px;
+  color:#5b6b8a;
+  font-size:13px;
 }
-
 </style>
 </head>
 
 <body>
 
-<header>
+<!-- HERO -->
+<div class="hero">
+  <h1>NeverMiss AI</h1>
+  <p>
+    The AI system that captures every call, lead, and opportunity — and automatically follows up so your business never loses revenue again.
+  </p>
 
-<div class="logo">NeverMiss AI</div>
-
-<nav>
-<a href="#">Features</a>
-<a href="#">Product</a>
-<a href="#">Contact</a>
-</nav>
-
-</header>
-
-<section class="hero">
-
-<div class="hero-text">
-
-<h1>Never Miss What Matters</h1>
-
-<p>
-NeverMiss AI uses artificial intelligence to track tasks,
-bills, deadlines, and opportunities so nothing important
-slips through the cracks.
-</p>
-
-<button>Join Early Access</button>
-
+  <div class="buttons">
+    <button class="primary">Join Waitlist</button>
+    <button class="secondary">See Demo</button>
+  </div>
 </div>
 
-<img src="https://images.unsplash.com/photo-1677442136019-21780ecad995">
-
-</section>
-
-<section class="features">
-
-<h2>Powerful AI Features</h2>
-
-<div class="feature-grid">
-
-<div class="card">
-
-<img src="https://cdn-icons-png.flaticon.com/512/1827/1827504.png">
-
-<h3>Smart Reminders</h3>
-
-<p>
-AI predicts upcoming responsibilities and reminds you
-before you forget.
-</p>
-
+<!-- PROBLEM -->
+<div class="section">
+  <h2>The Problem</h2>
+  <div class="grid">
+    <div class="card">❌ Missed calls = lost customers</div>
+    <div class="card">❌ Slow follow-up kills sales</div>
+    <div class="card">❌ Small teams can’t respond 24/7</div>
+  </div>
 </div>
 
-<div class="card">
-
-<img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
-
-<h3>Opportunity Tracking</h3>
-
-<p>
-Track job applications, follow-ups, and life opportunities
-automatically.
-</p>
-
+<!-- SOLUTION -->
+<div class="section">
+  <h2>The Solution</h2>
+  <div class="card">
+    <h3>NeverMiss AI works like a 24/7 AI sales assistant</h3>
+    <p style="color:#b7c3df; margin-top:10px;">
+      It instantly responds to leads, answers calls, books appointments, and follows up automatically — without human delay.
+    </p>
+  </div>
 </div>
 
-<div class="card">
+<!-- DASHBOARD -->
+<div class="section">
+  <h2>Live AI Dashboard</h2>
 
-<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+  <div class="dashboard">
+    <h3>Real-Time Activity</h3>
 
-<h3>AI Life Insights</h3>
-
-<p>
-See patterns in your life and receive smart suggestions
-from AI.
-</p>
-
+    <div class="log">
+      <div>📞 Incoming call answered in 1.8 seconds</div>
+      <div>💬 AI responded to new website lead</div>
+      <div>📩 Follow-up email sent automatically</div>
+      <div>🔥 Hot lead pushed to CRM pipeline</div>
+      <div>📅 Appointment booked successfully</div>
+    </div>
+  </div>
 </div>
 
+<!-- TRUST -->
+<div class="section">
+  <h2>Why Businesses Use It</h2>
+
+  <div class="grid">
+    <div class="card">✔ 24/7 AI response system</div>
+    <div class="card">✔ Instant lead capture</div>
+    <div class="card">✔ CRM automation</div>
+    <div class="card">✔ No missed opportunities</div>
+  </div>
 </div>
 
-</section>
+<!-- TESTIMONIALS -->
+<div class="section">
+  <h2>What Users Say</h2>
 
-<section class="product">
-
-<div class="product-text">
-
-<h2>Your AI Life Assistant</h2>
-
-<p>
-NeverMiss AI becomes your personal life assistant —
-organizing tasks, reminders, opportunities, and goals
-in one intelligent system powered by AI.
-</p>
-
+  <div class="grid">
+    <div class="card">“We stopped losing leads overnight.”</div>
+    <div class="card">“It replaced our receptionist completely.”</div>
+    <div class="card">“We doubled conversions without hiring.”</div>
+  </div>
 </div>
 
-<img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485">
+<!-- PRICING -->
+<div class="section">
+  <h2>Pricing</h2>
 
-</section>
+  <div class="grid">
+    <div class="card">
+      <h3>Starter</h3>
+      <div class="price">$49</div>
+      <p style="color:#b7c3df;">Basic AI call handling</p>
+    </div>
 
-<section class="cta">
+    <div class="card">
+      <h3>Growth</h3>
+      <div class="price">$99</div>
+      <p style="color:#b7c3df;">Automation + CRM sync</p>
+    </div>
 
-<h2>Stop Forgetting Important Things</h2>
+    <div class="card">
+      <h3>Pro</h3>
+      <div class="price">$199</div>
+      <p style="color:#b7c3df;">Full AI sales assistant</p>
+    </div>
+  </div>
+</div>
 
-<p>Join the early access list for NeverMiss AI.</p>
+<!-- FINAL CTA -->
+<div class="section cta">
+  <h2>Get Early Access</h2>
+  <p style="color:#b7c3df; margin-bottom:20px;">
+    Join the waitlist before launch access closes.
+  </p>
 
-<button>Request Access</button>
-
-</section>
+  <input type="email" placeholder="Enter your email" />
+  <button class="primary">Join Waitlist</button>
+</div>
 
 <footer>
-
-© 2026 NeverMiss AI — All rights reserved
-
+  © 2026 NeverMiss AI — All rights reserved
 </footer>
 
 </body>
 </html>
-```
