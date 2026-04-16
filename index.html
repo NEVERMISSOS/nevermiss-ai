@@ -51,8 +51,11 @@ background:linear-gradient(135deg,var(--brand),var(--brand2));
 box-shadow:0 0 20px var(--brand)}
 
 .btn{
-padding:12px 18px;border-radius:999px;
-font-weight:700;border:1px solid var(--line);
+padding:12px 18px;
+border-radius:999px;
+font-weight:700;
+border:1px solid var(--line);
+cursor:pointer;
 transition:.2s;
 display:inline-flex;
 align-items:center;
@@ -60,10 +63,12 @@ gap:8px;
 }
 
 .btn:hover{transform:translateY(-2px)}
+
 .primary{
 background:linear-gradient(135deg,var(--brand),var(--brand2));
-color:#04101d;border:none;
-box-shadow:var(--shadow)
+color:#04101d;
+border:none;
+box-shadow:var(--shadow);
 }
 
 /* HERO */
@@ -94,15 +99,13 @@ margin-bottom:18px;
 color:#cfe9ff;
 }
 
-/* DEMO PHONE UI */
+/* DEMO */
 .phone{
 background:linear-gradient(180deg,var(--panel2),var(--panel));
 border:1px solid var(--line);
 border-radius:30px;
 padding:20px;
 box-shadow:var(--shadow);
-position:relative;
-overflow:hidden;
 cursor:pointer;
 }
 
@@ -140,52 +143,21 @@ animation:wave 1s infinite ease-in-out;
 
 @keyframes wave{50%{height:40px;opacity:.6}}
 
-/* FLOW */
-.flow{
+.flow,.pricing{
 display:grid;
-grid-template-columns:repeat(4,1fr);
 gap:16px;
-margin-top:50px;
+margin-top:40px;
 }
 
-.step{
+.flow{grid-template-columns:repeat(4,1fr)}
+.pricing{grid-template-columns:repeat(3,1fr)}
+
+.step,.card{
 padding:20px;
 border-radius:20px;
 background:var(--panel);
 border:1px solid var(--line);
 }
-
-/* RECORDINGS */
-.recordings{
-margin-top:60px;
-display:grid;
-gap:16px;
-}
-
-.record{
-padding:18px;
-border-radius:18px;
-background:var(--panel);
-border:1px solid var(--line);
-}
-
-/* PRICING */
-.pricing{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-margin-top:30px;
-}
-
-.card{
-padding:24px;
-border-radius:22px;
-background:var(--panel);
-border:1px solid var(--line);
-transition:.2s;
-}
-
-.card:hover{transform:translateY(-4px)}
 
 .price{
 font-size:32px;
@@ -193,7 +165,6 @@ font-weight:800;
 margin:10px 0;
 }
 
-/* CTA */
 .cta{
 text-align:center;
 padding:80px 20px;
@@ -201,12 +172,12 @@ padding:80px 20px;
 
 .bigbtn{
 padding:18px 26px;
-font-size:16px;
 border-radius:999px;
 background:linear-gradient(135deg,var(--brand),var(--brand2));
 font-weight:800;
 display:inline-block;
 margin-top:20px;
+cursor:pointer;
 }
 </style>
 </head>
@@ -229,8 +200,7 @@ margin-top:20px;
 <h1>Never miss a customer call again.</h1>
 
 <p>
-NeverMiss AI answers every inbound call instantly, qualifies the lead,
-and books or routes the job automatically.
+AI answers every call, captures the lead, and books jobs automatically.
 </p>
 
 <a class="btn primary" onclick="runDemo()">Try Live Demo</a>
@@ -240,19 +210,19 @@ and books or routes the job automatically.
 <div class="phone" onclick="runDemo()">
 <div class="call-ui">
 
-<div>
 <div style="display:flex;justify-content:space-between;color:#9fb4d9;font-size:12px">
-<span>● Live AI Call</span><span>Connected</span>
+<span>● Live AI Call</span><span id="status">Ready</span>
 </div>
 
 <div style="text-align:center;margin-top:30px">
 <div class="avatar"></div>
+
 <h3>NeverMiss AI</h3>
+
 <p id="demoText">“Hi, thanks for calling. How can I help you today?”</p>
 
 <div class="wave">
 <span></span><span></span><span></span><span></span><span></span>
-</div>
 </div>
 </div>
 
@@ -267,18 +237,9 @@ Listening • Processing • Responding
 <!-- FLOW -->
 <section class="flow">
 <div class="step"><b>Call Comes In</b><p>Customer dials your business.</p></div>
-<div class="step"><b>AI Answers</b><p>No missed calls or voicemail.</p></div>
-<div class="step"><b>Captures Info</b><p>Name, issue, urgency.</p></div>
+<div class="step"><b>AI Answers</b><p>No voicemail.</p></div>
+<div class="step"><b>Captures Info</b><p>Name, job, urgency.</p></div>
 <div class="step"><b>Books Job</b><p>Or routes instantly.</p></div>
-</section>
-
-<!-- RECORDINGS -->
-<section class="recordings">
-<h2>Recent AI Call Activity</h2>
-
-<div class="record">Plumbing Emergency → AI booked job in 2 minutes</div>
-<div class="record">Locksmith Call → AI dispatched technician</div>
-<div class="record">Dental Office → AI scheduled appointment</div>
 </section>
 
 <!-- PRICING -->
@@ -290,7 +251,7 @@ Listening • Processing • Responding
 <p>Basic AI answering.</p>
 </div>
 
-<div class="card" style="border:2px solid var(--brand)">
+<div class="card">
 <h3>Growth</h3>
 <div class="price">$99</div>
 <p>AI + booking automation.</p>
@@ -299,7 +260,7 @@ Listening • Processing • Responding
 <div class="card">
 <h3>Pro</h3>
 <div class="price">$199</div>
-<p>Full AI call center system.</p>
+<p>Full AI system.</p>
 </div>
 
 </section>
@@ -307,18 +268,44 @@ Listening • Processing • Responding
 <!-- CTA -->
 <section class="cta">
 <h2>Turn missed calls into booked jobs automatically</h2>
-<a class="bigbtn">Start Free Demo</a>
+<a class="bigbtn" onclick="runDemo()">Start Live Demo</a>
 </section>
 
 </div>
 
 <script>
-async function runDemo(){
-document.getElementById("demoText").innerText =
-"AI: Let me check availability and book that for you...";
 
-// HERE is where we will connect Make + OpenAI later
+const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/rjgq38urxjvrt6zbk9vayhfinp6bxalp";
+
+async function runDemo() {
+
+document.getElementById("status").innerText = "Connecting...";
+document.getElementById("demoText").innerText = "AI: Thinking...";
+
+try {
+
+const res = await fetch(MAKE_WEBHOOK_URL, {
+method: "POST",
+headers: { "Content-Type": "application/json" },
+body: JSON.stringify({
+message: "Customer is calling for urgent service booking"
+})
+});
+
+const text = await res.text();
+
+document.getElementById("status").innerText = "Live";
+document.getElementById("demoText").innerText = "AI: " + text;
+
+} catch (err) {
+
+document.getElementById("status").innerText = "Error";
+document.getElementById("demoText").innerText = "AI: Connection failed";
+
 }
+
+}
+
 </script>
 
 </body>
