@@ -3,24 +3,42 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NeverMiss AI</title>
+<title>NeverMiss AI — AI Receptionist SaaS</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+:root{
+--bg:#050816;
+--card:rgba(255,255,255,.06);
+--card2:rgba(255,255,255,.10);
+--line:rgba(255,255,255,.12);
+--text:#f6f8ff;
+--muted:#a8b8d9;
+--brand:#71e7ff;
+--brand2:#9a80ff;
+--shadow:0 30px 100px rgba(0,0,0,.55);
+}
+
+*{box-sizing:border-box}
+
 body{
 margin:0;
 font-family:Inter;
-background:#050816;
-color:#fff;
+background:
+radial-gradient(circle at 20% 10%, rgba(113,231,255,.10), transparent 30%),
+radial-gradient(circle at 80% 0%, rgba(154,128,255,.10), transparent 30%),
+linear-gradient(180deg,#0a1024,#050816);
+color:var(--text);
 }
 
 .wrap{
-max-width:1100px;
+max-width:1200px;
 margin:auto;
-padding:24px;
+padding:28px;
 }
 
+/* NAV */
 .nav{
 display:flex;
 justify-content:space-between;
@@ -29,85 +47,190 @@ padding:20px 0;
 }
 
 .logo{
-font-weight:800;
+font-weight:900;
 display:flex;
-align-items:center;
 gap:10px;
+align-items:center;
 }
 
 .dot{
-width:10px;height:10px;
+width:12px;
+height:12px;
 border-radius:50%;
-background:#71e7ff;
+background:linear-gradient(135deg,var(--brand),var(--brand2));
+box-shadow:0 0 20px var(--brand);
 }
 
+.btn{
+padding:12px 18px;
+border-radius:999px;
+font-weight:700;
+border:1px solid var(--line);
+cursor:pointer;
+background:transparent;
+color:white;
+transition:.2s;
+}
+
+.btn:hover{transform:translateY(-2px)}
+
+.primary{
+background:linear-gradient(135deg,var(--brand),var(--brand2));
+border:none;
+color:#04101d;
+box-shadow:var(--shadow);
+}
+
+/* HERO */
 .hero{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px;
+grid-template-columns:1.1fr .9fr;
+gap:40px;
+align-items:center;
 margin-top:40px;
 }
 
-.card{
-background:rgba(255,255,255,0.06);
-padding:20px;
-border-radius:20px;
-border:1px solid rgba(255,255,255,0.1);
-}
-
 h1{
-font-size:48px;
+font-size:58px;
+line-height:1;
 margin:0;
 }
 
 p{
-color:#a8b8d9;
-line-height:1.6;
+color:var(--muted);
+line-height:1.7;
 }
 
-button{
-padding:12px 16px;
-border-radius:12px;
-border:none;
-cursor:pointer;
-font-weight:700;
-background:linear-gradient(135deg,#71e7ff,#9a80ff);
-color:#000;
+.badge{
+display:inline-block;
+padding:6px 12px;
+border:1px solid var(--line);
+border-radius:999px;
+font-size:13px;
+margin-bottom:16px;
+color:#cfe9ff;
 }
 
-.chat{
-height:350px;
+/* CHAT */
+.chatBox{
+background:linear-gradient(180deg,var(--card2),var(--card));
+border:1px solid var(--line);
+border-radius:24px;
+padding:18px;
+height:520px;
+display:flex;
+flex-direction:column;
+box-shadow:var(--shadow);
+}
+
+.messages{
+flex:1;
 overflow:auto;
-padding:10px;
-background:#0b122a;
-border-radius:12px;
-margin-bottom:10px;
 font-size:14px;
+padding-right:6px;
 }
+
+.msg{margin:8px 0;line-height:1.4}
+.user{color:#cfe9ff;text-align:right}
+.ai{color:#9fb4d9}
 
 .inputRow{
 display:flex;
 gap:10px;
+margin-top:10px;
 }
 
 input{
 flex:1;
 padding:12px;
-border-radius:10px;
-border:1px solid #333;
+border-radius:12px;
+border:1px solid var(--line);
 background:#0b122a;
 color:white;
+outline:none;
 }
 
-.msg{
-margin:8px 0;
+button.send{
+padding:12px 16px;
+border-radius:12px;
+border:none;
+cursor:pointer;
+font-weight:700;
+background:linear-gradient(135deg,var(--brand),var(--brand2));
 }
 
-.user{color:#cfe9ff;text-align:right;}
-.ai{color:#9fb4d9;}
+/* SECTIONS */
+.section{
+margin-top:60px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+}
+
+.card{
+background:var(--card);
+border:1px solid var(--line);
+padding:18px;
+border-radius:18px;
+}
+
+/* PRICING */
+.pricing{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+margin-top:20px;
+}
+
+.priceCard{
+background:var(--card);
+border:1px solid var(--line);
+padding:22px;
+border-radius:18px;
+text-align:center;
+transition:.2s;
+}
+
+.priceCard:hover{
+transform:translateY(-5px);
+}
+
+.price{
+font-size:34px;
+font-weight:800;
+margin:10px 0;
+color:#fff;
+}
+
+/* CTA */
+.cta{
+text-align:center;
+padding:70px 20px;
+}
+
+.cta h2{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.bigbtn{
+padding:16px 24px;
+border-radius:999px;
+background:linear-gradient(135deg,var(--brand),var(--brand2));
+font-weight:800;
+display:inline-block;
+margin-top:18px;
+cursor:pointer;
+border:none;
+}
 
 @media(max-width:900px){
-.hero{grid-template-columns:1fr;}
+.hero{grid-template-columns:1fr}
+.grid,.pricing{grid-template-columns:1fr}
+h1{font-size:40px}
 }
 </style>
 </head>
@@ -119,76 +242,147 @@ margin:8px 0;
 <!-- NAV -->
 <div class="nav">
 <div class="logo"><span class="dot"></span>NeverMiss AI</div>
+<button class="btn primary" onclick="sendMessage()">Try Live Demo</button>
 </div>
 
 <!-- HERO -->
-<div class="hero">
+<section class="hero">
 
-<!-- LEFT -->
-<div class="card">
-<h1>AI Receptionist</h1>
+<div>
+
+<div class="badge">AI Voice + Chat Reception System</div>
+
+<h1>Turn every missed call into revenue.</h1>
+
 <p>
-NeverMiss AI answers customers, captures leads, and responds instantly.
+NeverMiss AI answers calls instantly, qualifies leads, and books jobs automatically.
 </p>
-<p>
-Type a message below to test the AI demo.
-</p>
+
 </div>
 
-<!-- RIGHT CHAT -->
-<div class="card">
+<!-- CHAT -->
+<div class="chatBox">
 
-<div id="chat" class="chat">
+<div class="messages" id="messages">
 <div class="msg ai">AI: Hi! How can I help you today?</div>
 </div>
 
 <div class="inputRow">
-<input id="input" placeholder="Type message..." />
-<button onclick="send()">Send</button>
+<input id="input" placeholder="Type your message..." />
+<button class="send" onclick="sendMessage()">Send</button>
 </div>
 
 </div>
 
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+<div class="grid">
+
+<div class="card">
+<h3>Instant Answering</h3>
+<p>No missed calls ever again.</p>
 </div>
+
+<div class="card">
+<h3>Lead Capture</h3>
+<p>Collect customer details automatically.</p>
+</div>
+
+<div class="card">
+<h3>Automated Booking</h3>
+<p>Book or route jobs instantly.</p>
+</div>
+
+</div>
+</section>
+
+<!-- PRICING (RESTORED) -->
+<section class="section">
+
+<h2 style="text-align:center;margin-bottom:10px;">Pricing</h2>
+<p style="text-align:center;color:var(--muted)">Simple, scalable plans for service businesses</p>
+
+<div class="pricing">
+
+<div class="priceCard">
+<h3>Starter</h3>
+<div class="price">$49</div>
+<p>Basic AI answering for small businesses.</p>
+</div>
+
+<div class="priceCard" style="border:2px solid var(--brand)">
+<h3>Growth</h3>
+<div class="price">$99</div>
+<p>AI + lead capture + booking automation.</p>
+</div>
+
+<div class="priceCard">
+<h3>Pro</h3>
+<div class="price">$199</div>
+<p>Full white-label AI receptionist system.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<h2>Start converting missed calls into revenue</h2>
+<button class="bigbtn" onclick="sendMessage()">Launch Demo</button>
+</section>
 
 </div>
 
 <script>
 
-const WEBHOOK_URL = "https://hook.us2.make.com/rjgq38urxjvrt6zbk9vayhfinp6bxalp";
+const WEBHOOK = "https://hook.us2.make.com/rjgq38urxjvrt6zbk9vayhfinp6bxalp";
 
-function addMsg(text, type){
-const chat = document.getElementById("chat");
-chat.innerHTML += `<div class="msg ${type}">${text}</div>`;
-chat.scrollTop = chat.scrollHeight;
+let history = [];
+
+function addMsg(text, cls){
+const box = document.getElementById("messages");
+box.innerHTML += `<div class="msg ${cls}">${text}</div>`;
+box.scrollTop = box.scrollHeight;
 }
 
-async function send(){
+async function sendMessage(){
 
 const input = document.getElementById("input");
-const text = input.value.trim();
+let text = input.value.trim();
 
-if(!text) return;
+if(!text){
+text = "Hi, I need help with my service request";
+}
 
 input.value = "";
 
 addMsg("You: " + text, "user");
 
+history.push({role:"user",content:text});
+
 try{
 
-const res = await fetch(WEBHOOK_URL,{
+const res = await fetch(WEBHOOK,{
 method:"POST",
 headers:{"Content-Type":"application/json"},
-body:JSON.stringify({message:text})
+body:JSON.stringify({
+message:text,
+history:history
+})
 });
 
 const reply = await res.text();
 
 addMsg("AI: " + reply, "ai");
 
-}catch(err){
+history.push({role:"assistant",content:reply});
 
-addMsg("AI: Connection error (check Make scenario)", "ai");
+}catch(e){
+
+addMsg("AI: Connection error", "ai");
 
 }
 
