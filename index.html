@@ -103,6 +103,7 @@ padding:20px;
 box-shadow:var(--shadow);
 position:relative;
 overflow:hidden;
+cursor:pointer;
 }
 
 .call-ui{
@@ -115,18 +116,6 @@ flex-direction:column;
 justify-content:space-between;
 }
 
-.status{
-display:flex;
-justify-content:space-between;
-font-size:12px;
-color:var(--muted);
-}
-
-.call{
-text-align:center;
-margin-top:20px;
-}
-
 .avatar{
 width:90px;height:90px;border-radius:50%;
 margin:auto;
@@ -135,9 +124,7 @@ box-shadow:0 0 40px rgba(113,231,255,.4);
 animation:pulse 2s infinite;
 }
 
-@keyframes pulse{
-50%{transform:scale(1.08)}
-}
+@keyframes pulse{50%{transform:scale(1.08)}}
 
 .wave{
 display:flex;
@@ -151,14 +138,7 @@ width:4px;height:20px;background:var(--brand);
 animation:wave 1s infinite ease-in-out;
 }
 
-.wave span:nth-child(2){animation-delay:.1s}
-.wave span:nth-child(3){animation-delay:.2s}
-.wave span:nth-child(4){animation-delay:.3s}
-.wave span:nth-child(5){animation-delay:.4s}
-
-@keyframes wave{
-50%{height:40px;opacity:.6}
-}
+@keyframes wave{50%{height:40px;opacity:.6}}
 
 /* FLOW */
 .flow{
@@ -171,6 +151,20 @@ margin-top:50px;
 .step{
 padding:20px;
 border-radius:20px;
+background:var(--panel);
+border:1px solid var(--line);
+}
+
+/* RECORDINGS */
+.recordings{
+margin-top:60px;
+display:grid;
+gap:16px;
+}
+
+.record{
+padding:18px;
+border-radius:18px;
 background:var(--panel);
 border:1px solid var(--line);
 }
@@ -214,13 +208,6 @@ font-weight:800;
 display:inline-block;
 margin-top:20px;
 }
-
-/* MOBILE */
-@media(max-width:900px){
-.hero{grid-template-columns:1fr}
-h1{font-size:48px}
-.flow,.pricing{grid-template-columns:1fr}
-}
 </style>
 </head>
 
@@ -231,7 +218,7 @@ h1{font-size:48px}
 <!-- NAV -->
 <div class="nav">
 <div class="logo"><span class="dot"></span>NeverMiss AI</div>
-<a class="btn primary" href="#demo">Watch Live Demo</a>
+<a class="btn primary" onclick="runDemo()">Try Live Demo</a>
 </div>
 
 <!-- HERO -->
@@ -243,28 +230,29 @@ h1{font-size:48px}
 
 <p>
 NeverMiss AI answers every inbound call instantly, qualifies the lead,
-and books or routes the job automatically — 24/7 with no receptionist.
+and books or routes the job automatically.
 </p>
 
-<a class="btn primary" href="#demo">Try Live Call Demo</a>
+<a class="btn primary" onclick="runDemo()">Try Live Demo</a>
 </div>
 
-<!-- DEMO PHONE -->
-<div class="phone" id="demo">
+<!-- DEMO -->
+<div class="phone" onclick="runDemo()">
 <div class="call-ui">
 
-<div class="status">
-<span>● Live AI Call</span>
-<span>Connected</span>
+<div>
+<div style="display:flex;justify-content:space-between;color:#9fb4d9;font-size:12px">
+<span>● Live AI Call</span><span>Connected</span>
 </div>
 
-<div class="call">
+<div style="text-align:center;margin-top:30px">
 <div class="avatar"></div>
-<h3 style="margin-top:18px;">NeverMiss AI</h3>
-<p>“Hi, thanks for calling. How can I help you today?”</p>
+<h3>NeverMiss AI</h3>
+<p id="demoText">“Hi, thanks for calling. How can I help you today?”</p>
 
 <div class="wave">
 <span></span><span></span><span></span><span></span><span></span>
+</div>
 </div>
 </div>
 
@@ -278,10 +266,19 @@ Listening • Processing • Responding
 
 <!-- FLOW -->
 <section class="flow">
-<div class="step"><b>1. Call Comes In</b><p>Customer dials your business number.</p></div>
-<div class="step"><b>2. AI Answers</b><p>No ringing, no voicemail.</p></div>
-<div class="step"><b>3. Qualifies Lead</b><p>Captures name, job, urgency.</p></div>
-<div class="step"><b>4. Books Job</b><p>Or routes to your team instantly.</p></div>
+<div class="step"><b>Call Comes In</b><p>Customer dials your business.</p></div>
+<div class="step"><b>AI Answers</b><p>No missed calls or voicemail.</p></div>
+<div class="step"><b>Captures Info</b><p>Name, issue, urgency.</p></div>
+<div class="step"><b>Books Job</b><p>Or routes instantly.</p></div>
+</section>
+
+<!-- RECORDINGS -->
+<section class="recordings">
+<h2>Recent AI Call Activity</h2>
+
+<div class="record">Plumbing Emergency → AI booked job in 2 minutes</div>
+<div class="record">Locksmith Call → AI dispatched technician</div>
+<div class="record">Dental Office → AI scheduled appointment</div>
 </section>
 
 <!-- PRICING -->
@@ -290,19 +287,19 @@ Listening • Processing • Responding
 <div class="card">
 <h3>Starter</h3>
 <div class="price">$49</div>
-<p>Basic AI answering for small businesses.</p>
+<p>Basic AI answering.</p>
 </div>
 
 <div class="card" style="border:2px solid var(--brand)">
-<h3>Growth (Most Popular)</h3>
+<h3>Growth</h3>
 <div class="price">$99</div>
-<p>AI + lead capture + booking automation.</p>
+<p>AI + booking automation.</p>
 </div>
 
 <div class="card">
 <h3>Pro</h3>
 <div class="price">$199</div>
-<p>Full white-label AI call center system.</p>
+<p>Full AI call center system.</p>
 </div>
 
 </section>
@@ -310,11 +307,19 @@ Listening • Processing • Responding
 <!-- CTA -->
 <section class="cta">
 <h2>Turn missed calls into booked jobs automatically</h2>
-<p>Start your AI receptionist in minutes — no staff needed.</p>
-<a class="bigbtn" href="#demo">Launch Live Demo</a>
+<a class="bigbtn">Start Free Demo</a>
 </section>
 
 </div>
+
+<script>
+async function runDemo(){
+document.getElementById("demoText").innerText =
+"AI: Let me check availability and book that for you...";
+
+// HERE is where we will connect Make + OpenAI later
+}
+</script>
 
 </body>
 </html>
