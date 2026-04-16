@@ -76,7 +76,7 @@ border:none;
 color:#04101d;
 }
 
-/* HERO LAYOUT FIXED */
+/* HERO 3-COLUMN */
 .hero{
 display:grid;
 grid-template-columns:1fr 1.2fr 1fr;
@@ -144,7 +144,7 @@ box-shadow:0 0 40px rgba(113,231,255,.4);
 .ai{color:#9fb4d9}
 .user{color:#cfe9ff;text-align:right}
 
-/* RIGHT RESULT PANEL (FIXED POP OUT) */
+/* RIGHT RESULT (HIDDEN UNTIL DEMO START) */
 .result{
 background:linear-gradient(180deg,rgba(46,240,163,.18),rgba(46,240,163,.08));
 border:1px solid rgba(46,240,163,.4);
@@ -152,11 +152,14 @@ border-radius:20px;
 padding:18px;
 min-height:460px;
 box-shadow:0 0 40px rgba(46,240,163,.15);
+opacity:0;
+transform:translateY(10px);
+transition:.4s;
 }
 
-.result h3{
-margin-top:0;
-color:#bfffe8;
+.result.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .tag{
@@ -169,7 +172,7 @@ font-size:12px;
 margin-bottom:10px;
 }
 
-/* HOW IT WORKS SECTION */
+/* HOW IT WORKS */
 .steps{
 margin-top:40px;
 display:grid;
@@ -184,15 +187,38 @@ border-radius:16px;
 padding:16px;
 }
 
-.step b{
-display:block;
-margin-bottom:6px;
+.step b{display:block;margin-bottom:6px}
+
+/* PRICING */
+.pricingSection{
+margin-top:60px;
+text-align:center;
+}
+
+.pricingGrid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+margin-top:20px;
+}
+
+.priceCard{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:18px;
+padding:20px;
+}
+
+.price{
+font-size:32px;
+font-weight:800;
+margin:10px 0;
 }
 
 /* MOBILE */
 @media(max-width:1000px){
 .hero{grid-template-columns:1fr}
-.steps{grid-template-columns:1fr}
+.steps,.pricingGrid{grid-template-columns:1fr}
 h1{font-size:32px}
 .result{min-height:auto}
 }
@@ -215,13 +241,8 @@ h1{font-size:32px}
 <!-- LEFT INFO -->
 <div class="info">
 <h1>AI answers & books customer calls instantly</h1>
-<p>
-NeverMiss AI replaces your receptionist by answering calls, collecting job details, and booking appointments automatically.
-</p>
-
-<p>
-This demo shows a full end-to-end workflow: inbound call → AI qualification → job booking → dispatch.
-</p>
+<p>NeverMiss AI replaces your receptionist by answering calls, collecting job details, and booking appointments automatically.</p>
+<p>This demo shows full workflow: inbound call → AI qualification → job booking → dispatch.</p>
 </div>
 
 <!-- CENTER CALL -->
@@ -245,13 +266,11 @@ This demo shows a full end-to-end workflow: inbound call → AI qualification �
 
 </div>
 
-<!-- RIGHT RESULT -->
+<!-- RIGHT RESULT (EMPTY INITIALLY) -->
 <div class="result" id="result">
 <div class="tag">Job Output</div>
 <h3>No active job yet</h3>
-<p style="color:#bfffe8aa">
-Booked jobs will appear here after AI qualification.
-</p>
+<p style="color:#bfffe8aa">Booked jobs will appear here after AI qualification.</p>
 </div>
 
 </div>
@@ -259,24 +278,39 @@ Booked jobs will appear here after AI qualification.
 <!-- HOW IT WORKS -->
 <div class="steps">
 
-<div class="step">
-<b>1. Incoming Call</b>
-Customer calls your business number anytime.
+<div class="step"><b>1. Incoming Call</b>Customer calls your business anytime.</div>
+<div class="step"><b>2. AI Answers</b>Instant response with conversation flow.</div>
+<div class="step"><b>3. Qualification</b>Collects job details automatically.</div>
+<div class="step"><b>4. Booking</b>Creates dispatch-ready job instantly.</div>
+
 </div>
 
-<div class="step">
-<b>2. AI Answers</b>
-Instant response with natural conversation flow.
+<!-- PRICING -->
+<div class="pricingSection">
+
+<h2>Pricing</h2>
+<p style="color:var(--muted)">Simple plans for service businesses</p>
+
+<div class="pricingGrid">
+
+<div class="priceCard">
+<h3>Starter</h3>
+<div class="price">$49</div>
+<p>Basic AI answering system</p>
 </div>
 
-<div class="step">
-<b>3. Qualification</b>
-Collects name, issue, location, urgency.
+<div class="priceCard" style="border:2px solid var(--brand)">
+<h3>Growth</h3>
+<div class="price">$99</div>
+<p>AI + booking automation</p>
 </div>
 
-<div class="step">
-<b>4. Job Booking</b>
-Creates dispatch-ready job instantly.
+<div class="priceCard">
+<h3>Pro</h3>
+<div class="price">$199</div>
+<p>Full white-label system</p>
+</div>
+
 </div>
 
 </div>
@@ -291,13 +325,11 @@ document.getElementById("chat").innerHTML += `<div class="msg ${cls}">${msg}</di
 
 function startCall(){
 
+// SHOW RIGHT PANEL ONLY ON DEMO START
+document.getElementById("result").classList.add("show");
+
 document.getElementById("state").innerText = "Active";
 document.getElementById("chat").innerHTML = "";
-document.getElementById("result").innerHTML = `
-<div class="tag">Job Output</div>
-<h3>Processing call...</h3>
-<p>AI is collecting job details</p>
-`;
 
 document.getElementById("ui").innerHTML = `
 <h3>John (Customer)</h3>
